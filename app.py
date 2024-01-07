@@ -1,7 +1,7 @@
 import streamlit as st
 import codes
 
-st.set_page_config("C# Cheatsheet", layout='centered', initial_sidebar_state='auto')
+st.set_page_config("C# Cheatsheet", layout='centered', page_icon='📖',initial_sidebar_state='auto')
 def main():
     
     page = st.sidebar.selectbox("Choose a page",["Basics","Advance"])
