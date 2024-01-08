@@ -115,3 +115,53 @@ int myInt = (int)myDouble; // Explicitly converting double to int (loses decimal
     ''',
     "This happens when you explicitly tell the compiler to convert a data type that might lose information in the process. You use casting syntax to indicate this conversion explicitly."
 ]}
+
+examples = {"C# code getting the Volume of Sphere":[
+    '''
+using System;
+
+namespace VolumeOfSphere
+{
+    public class Program
+    {
+
+        public static void Main(string[] args)
+        {
+           const float Pi = 3.14159F;
+           int r = 0;
+           int d = 10;
+            double V;
+
+            if (r != 0 && d != 0)
+            {
+                d = 0;
+            }
+
+            if (r != 0)
+            {
+                r = (int)Math.Pow(r, 3);
+                V = 4 * r;
+                V = V / 3;
+                V = V * Pi;
+            }
+            else if(d != 0)
+            {
+                r = d / 2;
+                r = (int)Math.Pow(r, 3);
+                V = 4 * r;
+                V = V / 3;
+                V = V * Pi;
+            }
+            else
+            {
+                V = 0;
+            }
+
+
+           Console.WriteLine($"Volume of Sphere: {V:F1}");
+        }
+    }
+}
+    ''',
+    ""
+]}
