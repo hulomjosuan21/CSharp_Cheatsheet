@@ -122,6 +122,137 @@ Console.WriteLine("3 Decimals: {0:F3}",3.14159);
 Console.WriteLine("Commas: {0:n4}",1900000);
     ''',
     ""
+],"String Functions":[
+    '''
+string randString = "This is a string";
+Console.WriteLine("String Length: {0}",randString.Length);
+Console.WriteLine("String Contains 'is': {0}",randString.Contains("is"));
+Console.WriteLine("Index of 'is': {0}",randString.IndexOf("is"));
+Console.WriteLine("Remove String: {0}",randString.Remove(0,3+1));
+Console.WriteLine("Insert String: {0}",randString.Insert(10,"short "));
+Console.WriteLine("Replace String: {0}",randString.Replace("string","sentence"));
+
+Console.WriteLine("Compare A to B: {0}",String.Compare("B","A",StringComparison.OrdinalIgnoreCase));
+// Compare strings and ignore case
+// < 0 : str 1 preceeds str2
+// = 0 : Zero or Equal
+// > 0 : st2 preceeds str1
+Console.WriteLine("A = a {0}",String.Equals("A","a",StringComparison.OrdinalIgnoreCase));
+Console.WriteLine("Pad Left: {0}",randString.PadLeft(20,'.'));
+Console.WriteLine("Pad Right: {0}", randString.PadRight(randString.Length+4, '.'));
+Console.WriteLine("Trim: {0}",randString.Trim());
+
+Console.WriteLine("Uppercase: {0}",randString.ToUpper());
+Console.WriteLine("Lowercase: {0}",randString.ToLower());
+
+string newString = String.Format("{0} saw a {1} {2} in the {3}","Paul","rabbit","eating","field");
+Console.Write(newString+"\\n");
+Console.WriteLine(@"Exactly what I typed\\n");
+    ''',
+    ""
+],"Array practice #1":[
+    '''
+int[] arr = new int[3];
+arr[0] = 21;
+Console.WriteLine("arr[0] = {0}", arr[0]);
+    ''',
+    ""
+],"Array practice #2":[
+    '''
+string[] customers = {"Bob","Sally","Sue"};
+var employees = new[] {"Mike","Paul","Rick"};
+object[] objectArr = { "Paul", (short)21, 12.4, true };
+
+for (int i = 0; i < objectArr.Length; i++){
+    Console.WriteLine("objectArr[{0}] = {1} with the of type {2}", i, objectArr[i], objectArr[i].GetType());
+}
+    ''',
+    ""
+],"Array practice #3":[
+    '''
+string[,] custNames = new string[2, 2] { { "Bob", "Smith" }, { "Sally", "Mike" } };
+Console.WriteLine("custNames[1,1] = {0}", custNames.GetValue(1, 1));
+
+for (int i = 0; i < custNames.GetLength(0); i++){
+    for (int j = 0; j < custNames.GetLength(1) - 1; j++){
+        Console.WriteLine("Row: {0} {1},{2}", i, custNames[i, j], custNames[i, j + 1]);
+    }
+}
+    ''',
+    ""
+],"foreach loop printing the elements of the array":[
+    '''
+using System;
+using System.Numerics;
+
+namespace FirstProgram
+{
+    public class Program
+    {
+
+        static void PrintArr(int[] arr, string mess)
+        {
+            Console.WriteLine(mess);
+            foreach (int i in arr)
+            {
+                Console.WriteLine(i);
+            }
+        }
+
+        public static void Main(string[] args)
+        {
+            int[] randNum = { 1,3,2,4,5};
+            PrintArr(randNum,"foreach loop:");            
+        }
+    }
+}
+    ''',
+    ""
+],"Array practice #4":[
+    '''
+Array.Sort(randNum);
+PrintArr(randNum, "Sorted Array:");
+Array.Reverse(randNum);
+PrintArr(randNum, "Reversed Array:");
+    ''',
+    ""
+],"Array practice #5":[
+    '''
+int[] randNums = { 1, 3, 2, 4, 5 };
+Console.WriteLine("3 at index: {0}",Array.IndexOf(randNums, 3));
+
+randNums.SetValue(0,2);
+for (int i = 0; i < randNums.Length; i++)
+{
+    Console.WriteLine(randNums[i]);
+}
+    ''',
+    ""
+],"Array practice #6":[
+    '''
+int[] srcArr = { 1, 2, 3 };
+int[] destArr = new int[3];
+int startInd = 0;
+int length = 3;
+
+Array.Copy(srcArr,startInd,destArr,0,length);
+PrintArr(srcArr, "Source array");
+PrintArr(destArr, "Clone array");
+
+Array anotherArr = Array.CreateInstance(typeof(int),10);
+srcArr.CopyTo(anotherArr,5);
+foreach (int i in anotherArr)
+{
+    Console.WriteLine(i);
+}
+    ''',
+    ""
+],"Array practice #7":[
+    '''
+int[] exampleArr = { 1, 11, 22 };
+Console.WriteLine("> 10: {0}",Array.Find(exampleArr, num => num > 10));
+    ''',
+    ""
 ]}
 
 examples = {"C# code getting the Volume of Sphere":[
