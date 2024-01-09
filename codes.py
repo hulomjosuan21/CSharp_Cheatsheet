@@ -114,6 +114,14 @@ double myDouble = 10.5;
 int myInt = (int)myDouble; // Explicitly converting double to int (loses decimal part)
     ''',
     "This happens when you explicitly tell the compiler to convert a data type that might lose information in the process. You use casting syntax to indicate this conversion explicitly."
+],"Formatting":[
+    '''
+Console.WriteLine("Currency: {0:c}",23.45);
+Console.WriteLine("Pad with 0s: {0:d4}",19);
+Console.WriteLine("3 Decimals: {0:F3}",3.14159);
+Console.WriteLine("Commas: {0:n4}",1900000);
+    ''',
+    ""
 ]}
 
 examples = {"C# code getting the Volume of Sphere":[
