@@ -253,6 +253,204 @@ int[] exampleArr = { 1, 11, 22 };
 Console.WriteLine("> 10: {0}",Array.Find(exampleArr, num => num > 10));
     ''',
     ""
+],"Conditional Statements":[
+    '''
+int age = 4;
+
+if (age >= 5 && age <= 7){
+    Console.WriteLine("Go to Elementary school");
+}
+
+if (age > 7 && age < 13){
+    Console.WriteLine("Go to middle school");
+}
+
+if (age > 13 && age < 19){
+    Console.WriteLine("Go to high school");
+}
+else{
+    Console.WriteLine("Go to college");
+}
+
+if (age < 14 || age > 67){
+    Console.WriteLine("You shouldn't work");
+}
+
+Console.WriteLine("!true = " + (!true));
+
+bool canDrive = age >= 16 ? true : false;
+
+switch (age){
+    case 1:
+    case 2:
+        Console.WriteLine("Go to Day Care");
+        break;
+    case 3:
+    case 4:
+        Console.WriteLine("Go to Preschool");
+        break;
+    case 5:
+        Console.WriteLine("Go to Kindergarten");
+        break;
+    default:
+        Console.WriteLine("Go to another school");
+        goto OtherSchool;
+    }
+
+OtherSchool:
+    Console.WriteLine("Elementary, Middle, High School");
+
+string name2 = "Derek";
+string name3 = "derek";
+
+if (name2.Equals(name3,StringComparison.OrdinalIgnoreCase)){
+    Console.WriteLine("Names are equal");
+}
+else{
+    Console.WriteLine("Names are not equal");
+}
+
+int num = 21;
+
+if ((num % 2) == 0){
+    Console.WriteLine($"num = {num} is even");
+}
+else if (num == 21){
+    Console.WriteLine($"{num} is my birthday");
+}
+else{
+    Console.WriteLine($"num = {num} is odd");
+}
+    ''',
+    "Relational Operators: > < >= <= == !=\nLogical Operatos: && || !"
+],"While Loop":[
+    '''  
+int i = 1;
+
+while (i <= 10){
+    if (i % 2 == 0){
+        i++;
+        continue;
+    }
+    if (i == 9) break;
+    Console.WriteLine(i);
+    i++;
+} 
+    ''',
+    ""
+],"Do While Loop":[
+    '''  
+Random rnd = new Random();
+int secretNumber = rnd.Next(1,11);
+int numberGuessed = 0;
+
+Console.WriteLine("Random Num: {0}",secretNumber);
+
+do{
+    Console.WriteLine("Enter a number between 1 to 10: ");
+    numberGuessed = Convert.ToInt32(Console.ReadLine());
+} while (secretNumber != numberGuessed);
+
+Console.WriteLine("You guessed it it was {0}",secretNumber);
+    ''',
+    ""
+],"Exception Handling":[
+    '''  
+using System;
+using System.Numerics;
+
+namespace FirstProgram
+{
+    public class Program
+    {
+
+        static double DoDivision(double x, double y)
+        {
+            if (y == 0)
+            {
+                throw new System.DivideByZeroException();
+            }
+            return x / y;
+        }
+        public static void Main(string[] args)
+        {
+            double num1 = 5;
+            double num2 = 0;
+
+            try
+            {
+                Console.WriteLine("5 / 0 = {0}",DoDivision(num1,num2));
+            }
+            catch (DivideByZeroException ex)
+            {
+                Console.WriteLine("You can't divide by zero");
+                Console.WriteLine(ex.GetType().Name);
+                Console.WriteLine(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("An error eccured");
+                Console.WriteLine(ex.GetType().Name);
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                Console.WriteLine("Cleaning Up");
+            }
+        }
+    }
+}
+    ''',
+    ""
+],"StringBuilders":[
+    '''  
+StringBuilder sb = new StringBuilder("Random Text");
+
+// Create a StringBuilder with a size of 256
+StringBuilder sb2 = new StringBuilder("More Stuff that is very important", 256);
+
+// Get max size
+Console.WriteLine("Capacity : {0}", sb2.Capacity);
+
+// Get length
+Console.WriteLine("Length : {0}", sb2.Length);
+
+// Add text to StringBuilder
+sb2.AppendLine("\nMore important text");
+
+// Define culture specific formating
+CultureInfo enUS = CultureInfo.CreateSpecificCulture("en-US");
+
+// Append a format string
+string bestCust = "Bob Smith";
+sb2.AppendFormat(enUS, "Best Customer : {0}", bestCust);
+            
+// Output StringBuilder
+Console.WriteLine(sb2.ToString());
+
+// Replace a string
+sb2.Replace("text", "characters");
+Console.WriteLine(sb2.ToString());
+
+// Clear a string builder
+sb2.Clear();
+
+sb2.Append("Random Text");
+
+// Are objects equal
+Console.WriteLine(sb.Equals(sb2));
+
+// Insert at an index
+sb2.Insert(11, " that's Great");
+
+Console.WriteLine("Insert : {0}", sb2.ToString());
+
+// Remove number of characters starting at index
+sb2.Remove(11, 7);
+
+Console.WriteLine("Remove : {0}", sb2.ToString());
+    ''',
+    ""
 ]}
 
 examples = {"C# code getting the Volume of Sphere":[
