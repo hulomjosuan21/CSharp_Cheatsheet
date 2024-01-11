@@ -451,6 +451,75 @@ sb2.Remove(11, 7);
 Console.WriteLine("Remove : {0}", sb2.ToString());
     ''',
     ""
+],"Function/Methods #1":[
+    '''  
+using System;
+using System.Numerics;
+
+namespace FirstProgram
+{
+    public class Program
+    {
+
+        private double getSum(double x, double y)
+        {
+            return x + y;
+        }
+
+        private static double getDiff(double x, double y)
+        {
+            return x - y;
+        }
+
+        static void DoubleIt(int x, out int y)
+        {
+            y = x * 2;
+        }
+
+        static void Swap(ref int a, ref int b)
+        {
+            int temp = a;
+            a = b;
+            b = temp;
+        }
+
+        public double getSumMore(params double[] nums)
+        {
+            double sum = 0;
+            foreach (int i in nums)
+            {
+                sum += i;
+            }
+            return sum;
+        }
+
+        static void PrintInfo(string name, int zipcode)
+        {
+            Console.WriteLine($"{name} lives in the zip code {zipcode}");
+        }
+        public static void Main(string[] args)
+        {
+            int x = 5, y = 6, result;
+
+            Console.WriteLine("Sum: {0}",new Program().getSum(1,2));
+            Console.WriteLine("Difference: {0}", getDiff(x,y));
+
+            DoubleIt(x,out result);
+            Console.WriteLine("2x = {0}",result);
+
+            Console.WriteLine("Before swap: x = {0}, y = {1}",x,y);
+            Swap(ref x, ref y);
+            Console.WriteLine("After swap: x = {0}, y = {1}", x, y);
+
+            double moreSum = new Program().getSumMore(1,2,3,4,5);
+            Console.WriteLine($"More sum: {moreSum}");
+
+            PrintInfo(zipcode: 6000, name: "Josuan");
+        }
+    }
+}
+    ''',
+    ""
 ]}
 
 examples = {"C# code getting the Volume of Sphere":[
