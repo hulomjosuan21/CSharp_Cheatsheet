@@ -520,7 +520,345 @@ namespace FirstProgram
 }
     ''',
     ""
+],"Method Overloading":[
+    '''  
+using System;
+using System.Numerics;
+
+namespace FirstProgram
+{
+    public class Program
+    {
+        static double GetSum2(double x = 1, double y = 1)
+        {
+            return x + y;
+        }
+
+        static double GetSum2(string x = "1", string y = "1")
+        {
+            double dblX = Convert.ToDouble(x);
+            double dblY = Convert.ToDouble(y);
+            return dblX + dblY;
+        }
+        
+        public static void Main(string[] args)
+        {
+            Console.WriteLine(GetSum2(1,2));
+            Console.WriteLine(GetSum2("1","2"));
+        }
+    }
+}
+    ''',
+    ""
+],"DateTime":[
+    '''  
+using System;
+using System.Numerics;
+
+namespace FirstProgram
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            // Used to define dates
+            DateTime awesomeDate = new DateTime(1974, 12, 21);
+            Console.WriteLine("Day of Week : {0}", awesomeDate.DayOfWeek);
+
+            // You can change values
+            awesomeDate = awesomeDate.AddDays(4);
+            awesomeDate = awesomeDate.AddMonths(1);
+            awesomeDate = awesomeDate.AddYears(1);
+            Console.WriteLine("New Date : {0}", awesomeDate.Date);
+
+            // TimeSpan
+            // Used to define a time
+            TimeSpan lunchTime = new TimeSpan(12, 30, 0);
+
+            // Change values
+            lunchTime = lunchTime.Subtract(new TimeSpan(0, 15, 0));
+            lunchTime = lunchTime.Add(new TimeSpan(1, 0, 0));
+            Console.WriteLine("New Time : {0}", lunchTime.ToString());
+        }
+    }
+}
+    ''',
+    ""
+],"ShapeMath Class":[
+    '''  
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CSharp_Practice
+{
+    class ShapeMath
+    {
+        public static double GetArea(string shape = "",double length1 = 0,double length2 = 0)
+        {
+            if (String.Equals("Rectangle",shape,StringComparison.OrdinalIgnoreCase))
+            {
+                return length1 * length2;
+            }else if (String.Equals("Triangle", shape, StringComparison.OrdinalIgnoreCase))
+            {
+                return length1 * (length2 / 2);
+            }else if (String.Equals("Circle", shape, StringComparison.OrdinalIgnoreCase))
+            {
+                return 3.14159 * Math.Pow(length1, 2);
+            }
+            else
+            {
+                return -1;
+            }
+        }
+    }
+}
+    ''',
+    ""
+],"Animal Class":[
+    '''  
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CSharp_Practice
+{
+    class Animal
+    {
+        public string name;
+        public string sound;
+        static int numberOfAnimals = 0;
+        
+        public Animal()
+        {
+            name = "No Animal";
+            sound = "No sound";
+            numberOfAnimals++;
+        }
+
+        public Animal(string name = "No Animal")
+        {
+            this.name = name;
+            this.sound = "No sound";
+            numberOfAnimals++;
+        }
+
+        public Animal(string name = "No Animal",string sound = "No sound")
+        {
+            this.name = name;
+            this.sound = sound;
+            numberOfAnimals++;
+        }
+
+        public void MakeSound()
+        {
+            Console.WriteLine("{0} says {1}",name,sound);
+        }
+
+        public static int GetNumAnimals()
+        {
+            return numberOfAnimals;
+        }
+    }
+}
+    ''',
+    ""
+],"Class #1 and Struct":[
+    '''  
+using System;
+using System.Numerics;
+
+namespace CSharp_Practice
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            Rectangle rect1;
+            rect1.lenght = 200;
+            rect1.width = 50;
+
+            Console.WriteLine("Area of rect1: {0}", rect1.Area());
+
+            Rectangle rect2 = new Rectangle(100, 40);
+            rect2 = rect1;
+            rect1.lenght = 33;
+            Console.WriteLine("Rect2.length: {0}", rect2.lenght);
+
+            Animal fox = new Animal() { name = "Red",sound = "Raaw"};
+
+            Console.WriteLine("# of Animals: {0}",Animal.GetNumAnimals());
+            Console.WriteLine("Area of Rectangle: {0}",ShapeMath.GetArea("circle",5,6));
+
+            int? randNum = null;
+            if (randNum == null)
+            {
+                Console.WriteLine("randNum is null");
+            }
+            else
+            {
+                Console.WriteLine("randNum is not null");
+            }
+
+            //or
+
+            if (!randNum.HasValue)
+            {
+                Console.WriteLine("randNum is null");
+            }
+            else
+            {
+                Console.WriteLine("randNum is not null");
+            }
+        }
+
+        struct Rectangle
+        {
+            public double lenght;
+            public double width;
+
+            public Rectangle(double l = 1, double w = 1)
+            {
+                lenght = l; width = w;
+            }
+
+            public double Area()
+            {
+                return lenght * width;
+            }
+        }
+    }
+}
+    ''',
+    ""
+],"Animal Class #2":[
+    '''  
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CSharp_Practice
+{
+    class Animal
+    {
+        private string name;
+        private string sound;
+        public static int numberOfAnimals = 0;
+        public const string SHELTER = "Josuan's Home for Animals";
+        public readonly int idNum;
+
+        public Animal() : this("No Name", "No Sound") { }
+
+        public Animal(string name) : this(name,"No Sound") { }
+
+        public Animal(string name, string sound)
+        {
+            SetName(name);
+            Sound = sound;
+
+            NumOfAnimal = 1;
+            Random rnd = new Random();
+            idNum = rnd.Next(1,234234123);
+        }
+
+        public void MakeSound()
+        {
+            Console.WriteLine("{0} says {1}",name,sound);
+        }
+
+        public static int GetNumAnimals()
+        {
+            return numberOfAnimals;
+        }
+
+        public void SetName(string name)
+        {
+            if (!name.Any(char.IsDigit))
+            {
+                this.name = name;
+            }
+            else
+            {
+                this.name = "No Name";
+                Console.WriteLine("Name can't contain numbers");
+            }
+        }
+
+        public string GetName()
+        {
+            return name;
+        }
+
+        public string Sound
+        {
+            get { return sound;  }
+            set
+            {
+                if(value.Length > 10)
+                {
+                    sound = "No Sound";
+                    Console.WriteLine("Sound is too long");
+                }
+                else
+                {
+                    sound = value;
+                }
+            }
+        }
+
+        public string Owner { get; set; } = "No Owner";
+
+        public static int NumOfAnimal
+        {
+            get { return numberOfAnimals; }
+            set { numberOfAnimals += value; }
+        }
+    }
+}
+    ''',
+    ""
+],"Class #2":[
+    '''  
+using System;
+using System.Numerics;
+
+namespace CSharp_Practice
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            Animal cat = new Animal();
+            cat.SetName("Whiskers");
+            cat.Sound = "Meow";
+
+            Console.WriteLine("The cat is name {0} and says {1}",cat.GetName(),cat.Sound);
+
+            cat.Owner = "Josuan";
+            Console.WriteLine("{0} owner is {1}",cat.GetName(),cat.Owner);
+            Console.WriteLine("{0} shelder id is {1}", cat.GetName(), cat.idNum);
+            Console.WriteLine("Number of Animals: {0}",Animal.NumOfAnimal);
+        }
+    }
+}
+    ''',
+    ""
 ]}
+
+"""
+,"":[
+    '''  
+
+    ''',
+    ""
+]
+"""
 
 examples = {"C# code getting the Volume of Sphere":[
     '''
